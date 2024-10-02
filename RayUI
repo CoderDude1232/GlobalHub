@@ -107,6 +107,23 @@ local FieldOfViewSlider = PlayerTab:CreateSlider({
 
 local PlayerScriptsSection = PlayerTab:CreateSection("Player Scripts")
 
+local OtherFunctionsSection = OtherTab:CreateSection("Other Functions")
+
+local DestroyButton = OtherTab:CreateButton({
+   Name = "Destroy UI",
+   Callback = function()
+      Rayfield:Destroy()
+   end,
+})
+
+local DiscordButton = OtherTab:CreateButton({
+   Name = "Discord Link",
+   Callback = function()
+      setclipboard("discord.gg/JC6N5uMupk")
+      toclipboard("discord.gg/JC6N5uMupk")
+   end,
+})
+
 Rayfield:LoadConfiguration()
 
 
