@@ -27,6 +27,21 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+Rayfield:Notify({
+   Title = "Global Hub",
+   Content = "This script may not function on some games due to Anti-Cheat.",
+   Duration = 6.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay",
+         Callback = function()
+         
+      end
+   },
+},
+})
+
 local MainTab = Window:CreateTab("Main", nil) -- Title, Image
 local PlayerTab = Window:CreateTab("Player", nil) -- Title, Image
 local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
@@ -40,7 +55,7 @@ local Button = MainTab:CreateButton({
    end,
 })
 
-local PlayerValuesSection = MainTab:CreateSection("Player Values")
+local PlayerValuesSection = PlayerTab:CreateSection("Player Values")
 
 local WalkSpeedSlider = PlayerTab:CreateSlider({
    Name = "Walk Speed",
@@ -62,7 +77,7 @@ local JumpPowerSlider = PlayerTab:CreateSlider({
    CurrentValue = 50,
    Flag = "JumpPowerSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
    Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
    end,
 })
 
@@ -90,33 +105,11 @@ local FieldOfViewSlider = PlayerTab:CreateSlider({
    end,
 })
 
-local PlayerScriptsSection = MainTab:CreateSection("Player Scripts")
+local PlayerScriptsSection = PlayerTab:CreateSection("Player Scripts")
 
-local InfiniteJumpButton = PlayerTab:CreateButton({
-   Name = "Button Example",
-   Callback = function()
-   _G.infinjump = not _G.infinjump
+Rayfield:LoadConfiguration()
 
-        if _G.infinJumpStarted == nil then
-        	--Ensures this only runs once to save resources
-        	_G.infinJumpStarted = true
-	
-        	local plr = game:GetService('Players').LocalPlayer
-        	local m = plr:GetMouse()
-        	m.KeyDown:connect(function(k)
-        		if _G.infinjump then
-        			if k:byte() == 32 then
-        			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
-        			humanoid:ChangeState('Jumping')
-        			wait()
-        			humanoid:ChangeState('Seated')
-        			end
-        		end
-        	end)
-        end
-           end,
-   end,
-})
+
 
 
 
