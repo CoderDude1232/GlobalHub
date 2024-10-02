@@ -1,1 +1,128 @@
-loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+getgenv().SecureMode = false
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Global Hub",
+   LoadingTitle = "Global Hub",
+   LoadingSubtitle = "by StarBurst7266",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = GlobalHub, -- Create a custom folder for your hub/game
+      FileName = "GlobalHub"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "JC6N5uMupk", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Global Hub Key System",
+      Subtitle = "Key System",
+      Note = "Key In Discord - discord.gg/JC6N5uMupk",
+      FileName = "GlobalHubAuth", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Key.txt"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("Main", nil) -- Title, Image
+local PlayerTab = Window:CreateTab("Player", nil) -- Title, Image
+local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
+
+local ScriptsSection = MainTab:CreateSection("Public Scripts")
+
+local Button = MainTab:CreateButton({
+   Name = "Infinite Yield",
+   Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,
+})
+
+local PlayerValuesSection = MainTab:CreateSection("Player Values")
+
+local WalkSpeedSlider = PlayerTab:CreateSlider({
+   Name = "Walk Speed",
+   Range = {16, 250},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 16,
+   Flag = "WalkSpeedSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local JumpPowerSlider = PlayerTab:CreateSlider({
+   Name = "Jump Power",
+   Range = {50, 300},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 50,
+   Flag = "JumpPowerSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local HealthSlider = PlayerTab:CreateSlider({
+   Name = "Health",
+   Range = {0, 100},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 100,
+   Flag = "HealthSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     game.Player.LocalPlayer.Character.Humanoid.Health = Value
+   end,
+})
+
+local FieldOfViewSlider = PlayerTab:CreateSlider({
+   Name = "Field Of View",
+   Range = {10, 120},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 70,
+   Flag = "FieldOfViewSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+     game.workspace.CurrentCamera.FieldOfView = Value
+   end,
+})
+
+local PlayerScriptsSection = MainTab:CreateSection("Player Scripts")
+
+local InfiniteJumpButton = PlayerTab:CreateButton({
+   Name = "Button Example",
+   Callback = function()
+   _G.infinjump = not _G.infinjump
+
+        if _G.infinJumpStarted == nil then
+        	--Ensures this only runs once to save resources
+        	_G.infinJumpStarted = true
+	
+        	local plr = game:GetService('Players').LocalPlayer
+        	local m = plr:GetMouse()
+        	m.KeyDown:connect(function(k)
+        		if _G.infinjump then
+        			if k:byte() == 32 then
+        			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+        			humanoid:ChangeState('Jumping')
+        			wait()
+        			humanoid:ChangeState('Seated')
+        			end
+        		end
+        	end)
+        end
+           end,
+   end,
+})
+
+
+
+
+
+
+
+
+
