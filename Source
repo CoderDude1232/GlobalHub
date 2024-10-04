@@ -1,0 +1,97 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Global Hub",
+    SubTitle = "by StarBurst7266",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = Theme,
+    MinimizeKey = Enum.KeyCode.RightShift -- Used when theres no MinimizeKeybind
+})
+
+Fluent:Notify({
+    Title = "Global Hub",
+    Content = "Global Hub has successfully loaded.",
+    SubContent = "This script may not work due to Anti-Cheat.", -- Optional
+    Duration = 5 -- Set to nil to make the notification not disappear
+})
+
+-- Fluent provides Lucide Icons, they are optional
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "book" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "user" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+
+Tabs.Main:AddButton({
+    Title = "Infinite Yield",
+    Description = "Opens infinite yield.",
+    Callback = function()
+        Window:Dialog({
+            Title = "Global Hub",
+            Content = "Do you want to execute Infinite Yield?",
+            Buttons = {
+                { 
+                    Title = "Confirm",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+                    end 
+                }, {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end 
+                }
+            }
+        })
+    end
+})
+
+local WSSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Walk Speed",
+    Description = "Changes the players walk speed.",
+    Default = 16,
+    Min = 16,
+    Max = 500,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
+})
+
+local JPSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Jump Power",
+    Description = "Changes the players jump power.",
+    Default = 50,
+    Min = 50,
+    Max = 500,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end
+})
+
+local FOVSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Field Of View",
+    Description = "Changes the players field of view.",
+    Default = 70,
+    Min = 10,
+    Max = 120,
+    Rounding = 1,
+    Callback = function(Value)
+        game.workspace.CurrentCamera.FieldOfView = Value
+    end
+})
+
+Tabs.Settings:AddButton({
+    Title = "Discord Link",
+    Description = "Copies discord link to the clipboard.",
+    Callback = function()
+        setclipboard("https://discord.gg/JC6N5uMupk")
+        toclipboard("https://discord.gg/JC6N5uMupk")
+    end
+}) 
