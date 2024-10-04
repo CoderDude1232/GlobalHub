@@ -51,3 +51,5 @@ local Input = Tabs.KeySystem:AddInput("Input", {
         end
     end
 })
+
+Window:SelectTab(1)
