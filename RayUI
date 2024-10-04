@@ -87,19 +87,6 @@ local FOVSlider = Tabs.Player:AddSlider("Slider",
     end
 })
 
-local Dropdown = Tab:AddDropdown("Dropdown", {
-    Title = "Theme",
-    Description = "Select the them for the hub.",
-    Values = {"Dark", "Darker", "Light", "Aqua", "Amethyst", "Rose"},
-    Multi = false,
-    Default = 1,
-})
-
-Dropdown:OnChanged(function(Value)
-    local Theme = Value
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/RayUI"))()
-end)
-
 Tabs.Settings:AddButton({
     Title = "Discord Link",
     Description = "Copies discord link to the clipboard.",
