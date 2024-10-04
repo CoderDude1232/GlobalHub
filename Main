@@ -36,7 +36,7 @@ Tabs.KeySystem:AddButton({
     Callback = function()
         if _G.KeyInput == _G.Key then
             Fluent:Destroy()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Source"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Sourc"))()
         else
             Window:Dialog({
                 Title = "Key System",
