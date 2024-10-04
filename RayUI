@@ -97,7 +97,7 @@ local Dropdown = Tab:AddDropdown("Dropdown", {
 
 Dropdown:OnChanged(function(Value)
     local Theme = Value
-    loadstring(game:HttpGet(https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/RayUI))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/RayUI"))()
 end)
 
 Tabs.Settings:AddButton({
