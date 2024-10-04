@@ -20,13 +20,20 @@ _G.KeyInput = "string"
 
 local Input = Tabs.KeySystem:AddInput("Input", {
     Title = "Enter Key",
-    Description = "Enter key and press enter to verify.",
+    Description = "Enter key and press check key.",
     Default = "",
     Placeholder = "Key",
     Numeric = false, -- Only allows numbers
     Finished = false, -- Only calls callback when you press enter
     Callback = function(Value)
         _G.KeyInput = Value
+    end
+})
+
+Tabs.KeySystem:AddButton({
+    Title = "Check Key",
+    Description = "Checks the key.",
+    Callback = function()
         if _G.KeyInput == _G.Key then
             Fluent:Destroy()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/GlobalHub"))()
