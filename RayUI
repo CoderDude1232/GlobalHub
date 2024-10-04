@@ -1,138 +1,110 @@
-getgenv().SecureMode = false
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local Window = Rayfield:CreateWindow({
-   Name = "Global Hub",
-   LoadingTitle = "Global Hub",
-   LoadingSubtitle = "by StarBurst7266",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = GlobalHub, -- Create a custom folder for your hub/game
-      FileName = "GlobalHub"
-   },
-   Discord = {
-      Enabled = true,
-      Invite = "JC6N5uMupk", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-   },
-   KeySystem = true, -- Set this to true to use our key system
-   KeySettings = {
-      Title = "Global Hub Key System",
-      Subtitle = "Key System",
-      Note = "Key In Discord - discord.gg/JC6N5uMupk",
-      FileName = "GlobalHubAuth", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Key.txt"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-   }
+local Window = Fluent:CreateWindow({
+    Title = "Global Hub",
+    SubTitle = "by StarBurst7266",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = Theme,
+    MinimizeKey = Enum.KeyCode.RightShift -- Used when theres no MinimizeKeybind
 })
 
-Rayfield:Notify({
-   Title = "Global Hub",
-   Content = "This script may not function on some games due to Anti-Cheat.",
-   Duration = 6.5,
-   Image = nil,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "Okay",
-         Callback = function()
-         
-      end
-   },
-},
+Fluent:Notify({
+    Title = "Global Hub",
+    Content = "Global Hub has successfully loaded.",
+    SubContent = "This script may not work due to Anti-Cheat.", -- Optional
+    Duration = 5 -- Set to nil to make the notification not disappear
 })
 
-local MainTab = Window:CreateTab("Main", nil) -- Title, Image
-local PlayerTab = Window:CreateTab("Player", nil) -- Title, Image
-local OtherTab = Window:CreateTab("Other", nil) -- Title, Image
+-- Fluent provides Lucide Icons, they are optional
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "book" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "user" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
 
-local ScriptsSection = MainTab:CreateSection("Public Scripts")
-
-local Button = MainTab:CreateButton({
-   Name = "Infinite Yield",
-   Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
-   end,
+Tabs.Main:AddButton({
+    Title = "Infinite Yield",
+    Description = "Opens infinite yield.",
+    Callback = function()
+        Window:Dialog({
+            Title = "Global Hub",
+            Content = "Do you want to execute Infinite Yield?",
+            Buttons = {
+                { 
+                    Title = "Confirm",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+                    end 
+                }, {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end 
+                }
+            }
+        })
+    end
 })
 
-local PlayerValuesSection = PlayerTab:CreateSection("Player Values")
-
-local WalkSpeedSlider = PlayerTab:CreateSlider({
-   Name = "Walk Speed",
-   Range = {16, 250},
-   Increment = 1,
-   Suffix = "",
-   CurrentValue = 16,
-   Flag = "WalkSpeedSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-   end,
+local WSSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Walk Speed",
+    Description = "Changes the players walk speed.",
+    Default = 16,
+    Min = 16,
+    Max = 500,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end
 })
 
-local JumpPowerSlider = PlayerTab:CreateSlider({
-   Name = "Jump Power",
-   Range = {50, 300},
-   Increment = 1,
-   Suffix = "",
-   CurrentValue = 50,
-   Flag = "JumpPowerSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-   end,
+local JPSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Jump Power",
+    Description = "Changes the players jump power.",
+    Default = 50,
+    Min = 50,
+    Max = 500,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+    end
 })
 
-local HealthSlider = PlayerTab:CreateSlider({
-   Name = "Health",
-   Range = {0, 100},
-   Increment = 1,
-   Suffix = "",
-   CurrentValue = 100,
-   Flag = "HealthSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-     game.Player.LocalPlayer.Character.Humanoid.Health = Value
-   end,
+local FOVSlider = Tabs.Player:AddSlider("Slider", 
+{
+    Title = "Field Of View",
+    Description = "Changes the players field of view.",
+    Default = 70,
+    Min = 10,
+    Max = 120,
+    Rounding = 1,
+    Callback = function(Value)
+        game.workspace.CurrentCamera.FieldOfView = Value
+    end
 })
 
-local FieldOfViewSlider = PlayerTab:CreateSlider({
-   Name = "Field Of View",
-   Range = {10, 120},
-   Increment = 1,
-   Suffix = "",
-   CurrentValue = 70,
-   Flag = "FieldOfViewSliderValue", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-     game.workspace.CurrentCamera.FieldOfView = Value
-   end,
+local Dropdown = Tab:AddDropdown("Dropdown", {
+    Title = "Theme",
+    Description = "Select the them for the hub.",
+    Values = {"Dark", "Darker", "Light", "Aqua", "Amethyst", "Rose"},
+    Multi = false,
+    Default = 1,
 })
 
-local PlayerScriptsSection = PlayerTab:CreateSection("Player Scripts")
+Dropdown:OnChanged(function(Value)
+    local Theme = Value
+    https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/RayUI
+end)
 
-local OtherFunctionsSection = OtherTab:CreateSection("Other Functions")
-
-local DestroyButton = OtherTab:CreateButton({
-   Name = "Destroy UI",
-   Callback = function()
-      Rayfield:Destroy()
-   end,
-})
-
-local DiscordButton = OtherTab:CreateButton({
-   Name = "Discord Link",
-   Callback = function()
-      setclipboard("discord.gg/JC6N5uMupk")
-      toclipboard("discord.gg/JC6N5uMupk")
-   end,
-})
-
-Rayfield:LoadConfiguration()
-
-
-
-
-
-
-
-
-
-
-
+Tabs.Settings:AddButton({
+    Title = "Discord Link",
+    Description = "Copies discord link to the clipboard.",
+    Callback = function()
+        setclipboard("https://discord.gg/JC6N5uMupk")
+        toclipboard("https://discord.gg/JC6N5uMupk")
+    end
+}) 
