@@ -92,12 +92,12 @@ local Toggle = Tabs.Player:AddToggle("InfiniteJumpToggle",
 {
     Title = "Toggle", 
     Description = "Toggle description",
-    Default = false
+    Default = false,
     Callback = function(state)
-	    if state then
-	        loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
-	    else
-	        loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
+	if state then
+	     loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
+	else
+	     loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
         end
     end 
 })
