@@ -88,18 +88,12 @@ local FOVSlider = Tabs.Player:AddSlider("FieldOfViewSlider",
 
 local PlrScriptsSection = Tabs.Player:AddSection("Scripts")
 
-local Toggle = Tabs.Player:AddToggle("InfiniteJumpToggle", 
-{
-    Title = "Infinite Jump", 
+Tabs.Settings:AddButton({
+    Title = "Infinite Jump",
     Description = "Toggles infinite jump on or off.",
-    Default = false,
-    Callback = function(state)
-	if state then
-	     loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
-	else
-	     loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
-        end
-    end 
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
+    end
 })
 
 local DiscordSection = Tabs.Settings:AddSection("Discord")
