@@ -15,7 +15,7 @@ local Tabs = {
     KeySystem = Window:AddTab({ Title = "Key System", Icon = "lock" }),
 }
 
-_G.Key = "EfBQkzwrFioQUHuukmyyjTwC7N7ruGet"
+_G.Key = loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Key"))()
 _G.KeyInput = "string"
 
 local Input = Tabs.KeySystem:AddInput("Input", {
