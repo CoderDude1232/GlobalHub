@@ -1,5 +1,4 @@
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local KeyData = loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Key"))()
 
 local Window = Fluent:CreateWindow({
     Title = "Key System",
@@ -16,7 +15,7 @@ local Tabs = {
     KeySystem = Window:AddTab({ Title = "Key System", Icon = "lock" }),
 }
 
-_G.Key = KeyData
+_G.Key = "ySwZ/TjhcxGIO+cxorJ7gu70j3YxWIHMIZcghly1C1NVdhxKDiBWIOn7wQtSMtn1p2vT63B7VMycSe47LgD7MQ=="
 _G.KeyInput = "string"
 
 local Input = Tabs.KeySystem:AddInput("Input", {
