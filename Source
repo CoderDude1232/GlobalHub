@@ -21,6 +21,8 @@ local Tabs = {
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
+local ScriptsSection = Tabs.Main:AddSection("Scripts")
+
 Tabs.Main:AddButton({
     Title = "Infinite Yield",
     Description = "Opens infinite yield.",
@@ -44,6 +46,8 @@ Tabs.Main:AddButton({
         })
     end
 })
+
+local MovementSection = Tabs.Player:AddSection("Movement")
 
 local WSSlider = Tabs.Player:AddSlider("Slider", 
 {
@@ -83,6 +87,8 @@ local FOVSlider = Tabs.Player:AddSlider("Slider",
         game.workspace.CurrentCamera.FieldOfView = Value
     end
 })
+
+local DiscordSection = Tabs.Settings:AddSection("Discord")
 
 Tabs.Settings:AddButton({
     Title = "Discord Link",
