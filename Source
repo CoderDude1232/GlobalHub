@@ -2,15 +2,13 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
-local Theme = Darker
-
 local Window = Fluent:CreateWindow({
     Title = "Global Hub",
     SubTitle = "by StarBurst7266",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = Theme,
+    Theme = Darker,
     MinimizeKey = Enum.KeyCode.RightShift -- Used when theres no MinimizeKeybind
 })
 
@@ -49,7 +47,7 @@ Tabs.Main:AddButton({
 
 local MovementSection = Tabs.Player:AddSection("Movement")
 
-local WSSlider = Tabs.Player:AddSlider("Slider", 
+local WSSlider = Tabs.Player:AddSlider("WalkSpeedSlider", 
 {
     Title = "Walk Speed",
     Description = "Changes the players walk speed.",
@@ -62,7 +60,7 @@ local WSSlider = Tabs.Player:AddSlider("Slider",
     end
 })
 
-local JPSlider = Tabs.Player:AddSlider("Slider", 
+local JPSlider = Tabs.Player:AddSlider("JumpPowerSlider", 
 {
     Title = "Jump Power",
     Description = "Changes the players jump power.",
@@ -75,7 +73,7 @@ local JPSlider = Tabs.Player:AddSlider("Slider",
     end
 })
 
-local FOVSlider = Tabs.Player:AddSlider("Slider", 
+local FOVSlider = Tabs.Player:AddSlider("FieldOfViewSlider", 
 {
     Title = "Field Of View",
     Description = "Changes the players field of view.",
@@ -86,6 +84,22 @@ local FOVSlider = Tabs.Player:AddSlider("Slider",
     Callback = function(Value)
         game.workspace.CurrentCamera.FieldOfView = Value
     end
+})
+
+local PlrScriptsSection = Tabs.Player:AddSection("Scripts")
+
+local Toggle = Tabs.Player:AddToggle("InfiniteJumpToggle", 
+{
+    Title = "Toggle", 
+    Description = "Toggle description",
+    Default = false
+    Callback = function(state)
+	    if state then
+	        loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
+	    else
+	        loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/scripts/InfiniteJump"))()
+        end
+    end 
 })
 
 local DiscordSection = Tabs.Settings:AddSection("Discord")
