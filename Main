@@ -41,6 +41,7 @@ Tabs.KeySystem:AddButton({
                 SubContent = "The hub will be automatically loaded.", -- Optional
                 Duration = 5 -- Set to nil to make the notification not disappear
             })
+            task.wait(5)
             Fluent:Destroy()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Source"))()
         else
