@@ -35,25 +35,20 @@ Tabs.KeySystem:AddButton({
     Description = "Checks the key.",
     Callback = function()
         if _G.KeyInput == _G.Key then
+            Fluent:Notify({
+                Title = "Global Hub",
+                Content = "The key you entered is correct.",
+                SubContent = "The hub will be automatically loaded.", -- Optional
+                Duration = 5 -- Set to nil to make the notification not disappear
+            })
             Fluent:Destroy()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/CoderDude1232/GlobalHub/refs/heads/main/Source"))()
         else
-            Window:Dialog({
-                Title = "Key System",
+            Fluent:Notify({
+                Title = "Global Hub",
                 Content = "The key you entered is incorrect.",
-                Buttons = {
-                    { 
-                        Title = "OK",
-                        Callback = function()
-                            print("Confirmed the dialog.")
-                        end 
-                    }, {
-                        Title = "Cancel",
-                        Callback = function()
-                            print("Cancelled the dialog.")
-                        end 
-                    }
-                }
+                SubContent = "Please enter a new key to check.", -- Optional
+                Duration = 5 -- Set to nil to make the notification not disappear
             })
         end
     end
