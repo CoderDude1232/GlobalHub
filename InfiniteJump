@@ -1,4 +1,4 @@
-_G.infinjump = not _G.infinjump
+not _G.infinjump = _G.infinjump
 
 if _G.infinJumpStarted == nil then
 	_G.infinJumpStarted = true
