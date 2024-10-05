@@ -1,5 +1,8 @@
-local Theme = Darker
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local Theme = Darker
 
 local Window = Fluent:CreateWindow({
     Title = "Global Hub",
@@ -9,13 +12,6 @@ local Window = Fluent:CreateWindow({
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = Theme,
     MinimizeKey = Enum.KeyCode.RightShift -- Used when theres no MinimizeKeybind
-})
-
-Fluent:Notify({
-    Title = "Global Hub",
-    Content = "Global Hub has successfully loaded.",
-    SubContent = "This script may not work due to Anti-Cheat.", -- Optional
-    Duration = 5 -- Set to nil to make the notification not disappear
 })
 
 -- Fluent provides Lucide Icons, they are optional
@@ -95,4 +91,25 @@ Tabs.Settings:AddButton({
         setclipboard("https://discord.gg/JC6N5uMupk")
         toclipboard("https://discord.gg/JC6N5uMupk")
     end
-}) 
+})
+
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+
+InterfaceManager:SetFolder("GlobalHub")
+SaveManager:SetFolder("GlobalHub/Universal")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+
+Window:SelectTab(1)
+
+Fluent:Notify({
+    Title = "Global Hub",
+    Content = "Global Hub has successfully loaded.",
+    SubContent = "This script may not work due to Anti-Cheat.", -- Optional
+    Duration = 5 -- Set to nil to make the notification not disappear
+})
+
+SaveManager:LoadAutoloadConfig()
+
