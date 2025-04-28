@@ -1,27 +1,30 @@
-# Subject: Re: Issue with Game Pass Purchase Robux Distribution
+# Subject: Re: Issue with Application Purchase Robux Distribution
 
 Hi [User's Name],
 
-Thank you for contacting Roblox Support.
+Thank you for reaching out to Roblox Support.
 
-We understand that you recently purchased a Game Pass, but the Robux have not been credited to the creator’s account and are not showing in pending. We appreciate you taking the time to report this.
+We understand there has been an issue regarding Robux distribution following a recent application purchase. We appreciate you bringing this to our attention and are happy to help clarify the situation.
 
-Please note that per Roblox’s Terms of Use, **all purchases on the platform are final and non-refundable**, regardless of the circumstances. This includes Game Pass purchases. However, we want to ensure that your transaction was properly processed.
+From the information provided, a user initially purchased an application using Robux. However, after the purchase, the Robux never appeared as pending in the creator’s account.
 
-If the Robux are not appearing in pending and the creator has not received them, this could indicate:
-- The purchase did not fully complete.
-- There was an error with the Game Pass listing.
-- The item was removed or altered after purchase.
+Later, the purchased item was unexpectedly **removed from the buyer’s inventory**. The creator did not remove or delete the item from the platform — it was only removed from the buyer’s possession. To regain access, the buyer **re-purchased the same application**, but once again, no Robux appeared in pending for the creator.
 
-To better assist you, please provide:
-- Username of the Game Pass creator
-- Name and link to the Game Pass
-- Date and time of the purchase
-- A screenshot of your transaction history
+At this point, the creator has requested that Roblox Support investigate why Robux from either purchase have not been processed or recorded.
 
-While we cannot offer a refund, we can review the transaction and offer guidance on next steps.
+Please note that under Roblox’s Terms of Use, **all purchases are final and non-refundable**, regardless of the circumstances. However, we take missing transaction issues seriously and would like to look into this further.
 
-Thank you for being a part of the Roblox community.
+To assist with the investigation, please provide the following:
+- Username of the buyer
+- Username of the creator
+- Name and link to the application
+- Date and approximate time of both purchases
+- A screenshot of the buyer's transaction history, if available
+- Any relevant moderation messages that might explain the removal from inventory (if applicable)
+
+While we are unable to refund Robux, we can work to determine if there was a platform-side error and advise on any available next steps.
+
+Thank you for your patience and for being a part of the Roblox community.
 
 Best regards,  
 **Roblox Support Team**  
